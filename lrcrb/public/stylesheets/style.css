@@ -3,3 +3,17 @@ body {
   height: 100vh; /* Fills the entire viewport height */
   width: 100vw;
 }
+
+.div-vid {
+  position: absolute;
+  top:0;
+  left:0;
+  margin:0;
+  width: 100vw;
+}
+
+#ricrol {
+  width: 400px; /* Adjust video size as needed */
+  margin: 50%;
+  transform: translate(-50%, -50%);
+}
