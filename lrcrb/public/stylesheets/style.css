@@ -1,19 +1,10 @@
 body {
   margin: 0;
-  height: 100vh; /* Fills the entire viewport height */
-  width: 100vw;
 }
 
-.div-vid {
-  position: absolute;
-  top:0;
-  left:0;
-  margin:0;
-  width: 100vw;
-}
-
-#ricrol {
-  width: 400px; /* Adjust video size as needed */
-  margin: 50%;
-  transform: translate(-50%, -50%);
+@font-face {
+  font-family: 'Perm-Marker';
+  src: url('/fonts/Perm-Marker.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }

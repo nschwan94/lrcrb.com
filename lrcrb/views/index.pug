@@ -4,14 +4,53 @@ html(lang="en")
     title The Lime Rick
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    svg(viewBox="0 0 1 1")
-      path(d="M 0 0.5 H 1", fill="#f00", stroke="#000", stroke-width="0.1" )
-      path(d="M 0.5 0 V 1", fill="#f00", stroke="#000", stroke-width="0.1" )
-      path(d="M 0 0 L 1 1", fill="#f00", stroke="#000", stroke-width="0.1" )
-      path(d="M 1 0 L 0 1", fill="#f00", stroke="#000", stroke-width="0.1" )
-      circle(cx="0.5" cy="0.5" r="0.1" fill="white")
-    div.div-vid
-      video(src="/video/rickroll.mp4" id="ricrol" autoplay muted loop)
+    script.
+      window.addEventListener("load", () => {
+        window.scrollTo({
+          top: (document.body.scrollHeight - window.innerHeight) / 2,
+          behavior: "instant"
+        });
+      });
+    div.div-svg
+      svg(viewBox="0 0 1 1")
+        //- defs
+        //-   font-face(font-family="Perm-Marker")
+        //-     src: url('/fonts/Perm-Marker.ttf') format('truetype')
+        //-     font-weight: normal
+        //-     font-style: normal
+
+
+
+        path(d="M 0 0 L 0.5 0.5 L 0 0.5 Z", fill="#B31942")
+        path(d="M 0 0 L 0.5 0.5 L 0.5 0 Z", fill="#B31942")
+        path(d="M 1 0 L 0.5 0.5 L 0.5 0 Z", fill="#0A3161")
+        path(d="M 1 0 L 0.5 0.5 L 1 0.5 Z", fill="#0A3161")
+
+        path(d="M 0 1 L 0.5 0.5 L 0 0.5 Z", fill="#B31942")
+        path(d="M 0 1 L 0.5 0.5 L 0.5 1 Z", fill="#B31942")
+        path(d="M 1 1 L 0.5 0.5 L 1 0.5 Z", fill="#0A3161")
+        path(d="M 1 1 L 0.5 0.5 L 0.5 1 Z", fill="#0A3161")
+
+        path(d="M 0 0.5 H 1", stroke="#000", stroke-width="0.1" )
+        path(d="M 0.5 0 V 1", fill="#f00", stroke="#000", stroke-width="0.1" )
+        path(d="M 0 0 L 1 1", fill="#f00", stroke="#000", stroke-width="0.1")
+        path(d="M 1 0 L 0 1", fill="#f00", stroke="#000", stroke-width="0.1" )
+                  
+        circle(cx="0.5" cy="0.5" r="0.1" fill="white")
+        circle(cx="0.5" cy="0.5" r="0.07" fill="#42b319" id="iris")
+
+        text(x="0.5" y="0.5" font-family="Perm-Marker" text-anchor="middle" dominant-baseline="central" font-size="0.25", fill="gray") LRCRB
+
+        text(x="0.5" y="0.125" font-family="Perm-Marker" text-anchor="middle" dominant-baseline="central" font-size="0.25", fill="gray") L
+        text(x="0.5" y="0.31" font-family="Perm-Marker" text-anchor="middle" dominant-baseline="central" font-size="0.25", fill="gray") R
+        text(x="0.5" y="0.69" font-family="Perm-Marker" text-anchor="middle" dominant-baseline="central" font-size="0.25", fill="gray") R
+        text(x="0.5" y="0.87" font-family="Perm-Marker" text-anchor="middle" dominant-baseline="central" font-size="0.25", fill="gray") B
+
+
+
+
+
+
 
 
 
