@@ -6,4 +6,22 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+router.get("/red", (req, res) => {
+  res.render('users')
+});
+
+router.get("/black", (req, res) => {
+  res.render('users')
+});
+
+router.get("/white", (req, res) => {
+  res.render('users')
+});
+
+router.get("/blue", (req, res) => {
+  res.render('users')
+});
+
+
+
 module.exports = router;
