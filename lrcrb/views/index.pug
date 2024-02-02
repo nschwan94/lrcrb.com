@@ -1,9 +1,9 @@
 doctype html
 html(lang="en")
   head
-    title The Lime Rick
+    title LRCRB
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+    // jump to middle of landing page.
     script.
       window.addEventListener("load", () => {
         window.scrollTo({
@@ -11,15 +11,34 @@ html(lang="en")
           behavior: "instant"
         });
       });
-    div.div-svg
+    script.
+      // toggle modal open close
+      window.addEventListener('click', (event) => {
+        const modal = document.querySelector('.modal');
+        const modalStyle = window.getComputedStyle(modal);
+        if (modalStyle.display === "none") modal.style.display = "block";
+        else modal.style.display = "none";
+      });
+
+  body
+    .modal
+      .modal-content 
+        p thank you for visiting lrcrb.com
+        p its creator is nathan alexander schwan, iv (nas4)
+        p the brand is a diamond of his psyche
+        p this is the manifest of his reality
+        p we live in a twilight world 
+        p it is important to understand it
+        p it is important to understand ourselves
+        p everywhere we are in chains
+        p lrcrb is a candle in the darkness 
+        p please be courteous as you tour the facilities 
+        p all are welcome 
+        p everything is on the table
+        p seeking collaborations of all kinds with like minds
+
+    .svg
       svg(viewBox="0 0 1 1")
-        //- defs
-        //-   font-face(font-family="Perm-Marker")
-        //-     src: url('/fonts/Perm-Marker.ttf') format('truetype')
-        //-     font-weight: normal
-        //-     font-style: normal
-
-
 
         path(d="M 0 0 L 0.5 0.5 L 0 0.5 Z", fill="#B31942")
         path(d="M 0 0 L 0.5 0.5 L 0.5 0 Z", fill="#B31942")
