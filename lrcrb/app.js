@@ -3,9 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+// var mongoose = require('mongodb')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
+// loads env variables form config .env
+require('dotenv').config();
 
 var app = express();
 
@@ -37,5 +41,16 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// // MONGO DB
+
+// // Access keys from process.env
+// const mongoURI = process.env.MONGODB_URI;
+
+// // Connect to MongoDB using the URI
+// mongoose.connect(mongoURI, { useNewUrlParser: true })
+//     .then(() => console.log('Connected to MongoDB'))
+//     .catch(err => console.error('Error connecting to MongoDB:', err));
+
 
 module.exports = app;

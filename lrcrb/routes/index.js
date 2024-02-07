@@ -11,7 +11,7 @@ router.get("/red", (req, res) => {
 });
 
 router.get("/black", (req, res) => {
-  res.render('users')
+  res.render('blackpill')
 });
 
 router.get("/white", (req, res) => {

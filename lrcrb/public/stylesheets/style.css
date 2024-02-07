@@ -46,6 +46,16 @@ body {
   border: 1vh dashed gray;
  }
 
+ .will-test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50%;
+  overflow-y: scroll;
+ }
+
+
  .modal-content p {
   color: white;
   font-family: 'Lexend';
