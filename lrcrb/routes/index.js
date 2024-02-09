@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get("/red", (req, res) => {
-  res.render('users')
+  res.render('red')
 });
 
 router.get("/black", (req, res) => {
@@ -15,7 +15,7 @@ router.get("/black", (req, res) => {
 });
 
 router.get("/white", (req, res) => {
-  res.render('users')
+  res.render('white')
 });
 
 router.get("/blue", (req, res) => {
