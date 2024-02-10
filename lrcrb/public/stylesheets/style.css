@@ -78,6 +78,14 @@ body {
   padding: 0;
  }
 
+ .modal-content h2 {
+  color: white;
+  font-family: 'Lexend';
+  margin: 0.5vh;
+  padding: 0;
+ }
+
+
  .pills {
   display:flex;
   width: 100%;

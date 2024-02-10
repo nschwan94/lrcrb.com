@@ -14,6 +14,10 @@ router.get("/black", (req, res) => {
   res.render('black')
 });
 
+router.get("/blue", (req, res) => {
+  res.render('blue')
+});
+
 router.get("/white", (req, res) => {
   res.render('white')
 });
