@@ -55,11 +55,6 @@ body {
   flex: 1;
  }
 
- /* .long-form-text::-webkit-scrollbar {
-  display: none;
- }
- */
-
  ::-webkit-scrollbar {
   width: 10px;
 }
