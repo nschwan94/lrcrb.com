@@ -55,6 +55,30 @@ body {
   flex: 1;
  }
 
+ .email-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin: 1vh;
+ }
+
+input[type="email"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 1vh;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff; /* adjust color as needed */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
  ::-webkit-scrollbar {
   width: 10px;
 }

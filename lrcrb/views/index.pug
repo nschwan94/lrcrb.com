@@ -12,6 +12,54 @@ html(lang="en")
         });
       });
     script.
+      const initializeModalForm = () => {
+                // Assuming you have a reference to the p element stored in a variable named 'paragraph'
+        const changeText = (paragraph, newText) => {
+          paragraph.textContent = newText;
+        }
+        const paragraph = document.querySelector('.email-prompt');
+        document.querySelector('#emailform').addEventListener('submit', async (event) => {
+          event.preventDefault() // Prevent default form submission
+
+          const email = document.getElementById('email').value
+
+          // Validate email format (optional)
+          // ...
+          const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+          function validateEmail(email) {
+            return emailRegex.test(email);
+          }
+
+          if (!validateEmail(email)) {
+            changeText(paragraph, "theres something wrong with your address");
+            return;
+          }
+
+          try {
+            const response = await fetch('/submit-email', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ email })
+            })
+            console.log(response)
+
+            if (!response.ok) {
+              throw new Error(`Error: ${response.statusText}`)
+            }
+
+            const data = await response.json()
+            changeText(paragraph, "an email has been sent to your inbox");
+
+          } catch (error) {
+            console.error('Error:', error)
+            changeText(paragraph, "something went wrong with your email submission");
+          }
+        })
+      }
+    script.
       // toggle modal open close
       const eventHandler = (event) => {
         const modal = document.querySelector('.modal');
@@ -19,6 +67,7 @@ html(lang="en")
         if (modalStyle.display === "none") {
           document.body.style.overflow = 'hidden';
           modal.style.display = "block";
+          initializeModalForm();
         }
         else {
           document.body.style.overflow = 'auto';
@@ -27,7 +76,6 @@ html(lang="en")
         window.removeEventListener("click", eventHandler);
       }
       window.addEventListener("click", eventHandler);
-
   body
     .modal
       .modal-content
@@ -45,17 +93,21 @@ html(lang="en")
           p please be courteous as you tour the facilities 
           p all are welcome to partake in this transvaluation
           p everything is on the table
-          p long live the lime rick on a coronal roll bitch
-          p select your pill to proceed
-        .pills
-          button(id="red", type="button")
-            a(href="/red", role="button")
-          button(id="black", type="button")
-            a(href="/black", role="button")
-          button(id="white", type="button")
-            a(href="/white", role="button")
-          button(id="blue", type="button")
-            a(href="/blue", role="button")
+          p long live the lime rick on a corona roll bitch
+          p.email-prompt provide your email address and verify to continue
+        .email-form
+          form(method="post" id="emailform" action="/submit-email")
+            input(type="email" id="email" name="email" required placeholder="Enter your email address")
+            button(type="submit") Submit
+        //- .pills
+        //-   button(id="red", type="button")
+        //-     a(href="/red", role="button")
+        //-   button(id="black", type="button")
+        //-     a(href="/black", role="button")
+        //-   button(id="white", type="button")
+        //-     a(href="/white", role="button")
+        //-   button(id="blue", type="button")
+        //-     a(href="/blue", role="button")
 
     .svg
       svg(viewBox="0 0 1 1")
