@@ -1,0 +1,149 @@
+doctype html
+html(lang="en")
+  head
+    title LRCRB
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    // jump to middle of landing page.
+    script.
+      window.addEventListener("load", () => {
+        window.scrollTo({
+          top: (document.body.scrollHeight - window.innerHeight) / 2,
+          behavior: "instant"
+        });
+      });
+    script.
+      const initializeModalForm = () => {
+                // Assuming you have a reference to the p element stored in a variable named 'paragraph'
+        const changeText = (paragraph, newText) => {
+          paragraph.textContent = newText;
+        }
+        const paragraph = document.querySelector('.email-prompt');
+        document.querySelector('#emailform').addEventListener('submit', async (event) => {
+          event.preventDefault() // Prevent default form submission
+
+          const email = document.getElementById('email').value
+
+          // Validate email format (optional)
+          // ...
+          const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+          function validateEmail(email) {
+            return emailRegex.test(email);
+          }
+
+          if (!validateEmail(email)) {
+            changeText(paragraph, "theres something wrong with your address");
+            return;
+          }
+
+          try {
+            const response = await fetch('/submit-email', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ email })
+            })
+            console.log(response)
+
+            if (!response.ok) {
+              throw new Error(`Error: ${response.statusText}`)
+            }
+
+            const data = await response.json()
+            changeText(paragraph, "an email has been sent to your inbox");
+
+          } catch (error) {
+            console.error('Error:', error)
+            changeText(paragraph, "something went wrong with your email submission");
+          }
+        })
+      }
+    script.
+      // toggle modal open close
+      const eventHandler = (event) => {
+        const modal = document.querySelector('.modal');
+        const modalStyle = window.getComputedStyle(modal);
+        if (modalStyle.display === "none") {
+          document.body.style.overflow = 'hidden';
+          modal.style.display = "block";
+          initializeModalForm();
+        }
+        else {
+          document.body.style.overflow = 'auto';
+          modal.style.display = "none";
+        }
+        window.removeEventListener("click", eventHandler);
+      }
+      window.addEventListener("click", eventHandler);
+      const event = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true
+      });
+      window.dispatchEvent(event);
+
+  body
+    .modal
+      .modal-content
+        .long-form-text
+          p thank you for visiting lrcrb.com
+          p its creator is nathan alexander schwan iv aka nas4
+          p the brand is a diamond of his psyche
+          p this is the manifest of his reality
+          p we live in a twilight world 
+          p it is important to understand it
+          p it is important to understand ourselves
+          p in a quantum world very little is certain
+          p everywhere we are invisible chains
+          p lrcrb is a candle in the moonlight and a mirror in the sun 
+          p please be courteous as you tour the facilities 
+          p all are welcome to partake in this transvaluation
+          p everything is on the table
+          p long live the lime rick on a corona roll bitch
+          p.email-prompt email failed to confirm contact @LRCRB_LDL
+        //- .pills
+        //-   button(id="red", type="button")
+        //-     a(href="/red", role="button")
+        //-   button(id="black", type="button")
+        //-     a(href="/black", role="button")
+        //-   button(id="white", type="button")
+        //-     a(href="/white", role="button")
+        //-   button(id="blue", type="button")
+        //-     a(href="/blue", role="button")
+
+    .svg
+      svg(viewBox="0 0 1 1")
+
+        path(d="M 0 0 L 0.5 0.5 L 0 0.5 Z", fill="#B31942")
+        path(d="M 0 0 L 0.5 0.5 L 0.5 0 Z", fill="#B31942")
+        path(d="M 1 0 L 0.5 0.5 L 0.5 0 Z", fill="#0A3161")
+        path(d="M 1 0 L 0.5 0.5 L 1 0.5 Z", fill="#0A3161")
+
+        path(d="M 0 1 L 0.5 0.5 L 0 0.5 Z", fill="#B31942")
+        path(d="M 0 1 L 0.5 0.5 L 0.5 1 Z", fill="#B31942")
+        path(d="M 1 1 L 0.5 0.5 L 1 0.5 Z", fill="#0A3161")
+        path(d="M 1 1 L 0.5 0.5 L 0.5 1 Z", fill="#0A3161")
+
+        path(d="M 0 0.5 H 1", stroke="#000", stroke-width="0.1" )
+        path(d="M 0.5 0 V 1", fill="#f00", stroke="#000", stroke-width="0.1" )
+        path(d="M 0 0 L 1 1", fill="#f00", stroke="#000", stroke-width="0.1")
+        path(d="M 1 0 L 0 1", fill="#f00", stroke="#000", stroke-width="0.1" )
+                  
+        circle(cx="0.5" cy="0.5" r="0.1" fill="white")
+        circle(cx="0.5" cy="0.5" r="0.07" fill="#42b319" id="iris")
+
+        text(x="0.5" y="0.5" font-family="Perm-Marker" text-anchor="middle" dominant-baseline="central" font-size="0.25", fill="gray") LRCRB
+
+        text(x="0.5" y="0.125" font-family="Perm-Marker" text-anchor="middle" dominant-baseline="central" font-size="0.25", fill="gray") L
+        text(x="0.5" y="0.31" font-family="Perm-Marker" text-anchor="middle" dominant-baseline="central" font-size="0.25", fill="gray") R
+        text(x="0.5" y="0.69" font-family="Perm-Marker" text-anchor="middle" dominant-baseline="central" font-size="0.25", fill="gray") R
+        text(x="0.5" y="0.87" font-family="Perm-Marker" text-anchor="middle" dominant-baseline="central" font-size="0.25", fill="gray") B
+
+
+
+
+
+
+
+
+
