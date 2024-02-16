@@ -6,15 +6,9 @@ const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
 // MONGO DB
-
-// Access keys from process.env
-const privateMongo = process.env.MONGODB_URI_PRODUCTION_PRIVATE;
-// const publicMongo = process.env.MONGODB_URI_PRODUCTION_PUBIC;
-const localMongo = process.env.MONGODB_URI_DEVELOPMENT;
-const mongouri = process.env.NODE_ENV === 'production' ? privateMongo : localMongo;
+const mongouri = process.env.NODE_ENV === "production" ? process.env.MONGODB_URI_PRODUCTION : process.env.NODE_ENV === "production_local" ? process.env.MONGODB_URI_PUBLIC : process.env.MONGODB_URI_DEVELOPMENT
 const dbName = 'lrcrb';
 const collectionName = 'users';
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index');
@@ -68,7 +62,7 @@ const transporter = nodemailer.createTransport({
 const addUser = async (user) => {
   let client;
   try {  
-    console.log('adding user');
+    console.log('adding user', mongouri);
     client = await MongoClient.connect(mongouri);
     const db = client.db(dbName);
     const collection = db.collection(collectionName);
